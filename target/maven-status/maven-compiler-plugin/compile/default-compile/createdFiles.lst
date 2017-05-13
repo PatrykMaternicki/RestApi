@@ -1,0 +1,5 @@
+rest\TestRest.class
+domain\Movie.class
+rest\movieResources.class
+domain\Service\MovieService.class
+rest\ApplicationConfig.class
