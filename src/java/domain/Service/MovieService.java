@@ -6,18 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieService {
-    private  List<Movie> db = new ArrayList<Movie>();
-    private  int currentId = 1;
+    private  List<Movie> db = new ArrayList<>();
+    private  int currentId = 0;
 
     public List<Movie> getAll(){
         return db;
     }
+    public MovieService (){
+    	setup("emc2","Komedia");
+    	setup("Killer2","opis");
+    }
     public void insert (Movie movie){
     	Movie result = new Movie();
     	result = movie;
-        movie.setId(++currentId);
+        movie.setId(currentId);
         db.add(result);
+        ++currentId;
     }
+    
     public void remove (Movie movie){
         db.remove(movie);
     }
@@ -51,7 +57,15 @@ public class MovieService {
 		db.get(result.getId()).getRatting().add(rating);
 		
 	}
-
+	private void setup(String name, String comment){
+		Movie movie = new Movie();
+		movie.setName(name);
+		movie.setComment(comment);
+		
+		++currentId;
+	}
+	
+	
 
 
 }

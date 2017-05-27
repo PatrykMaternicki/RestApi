@@ -19,18 +19,19 @@ import java.util.List;
 
 @Path ("/movies")
 public class movieResources {
-    private MovieService db = new MovieService();
+    private MovieRepository repository = new MovierRepository();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Movie> getAll(){
         return db.getAll();
     }
+     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response setMovie(Movie movie){
     	db.insert(movie);
-    	return Response.ok(db.get(0)).build();
+    	return Response.ok(db.get(movie.getId())).build();
     }
     
     @PUT
